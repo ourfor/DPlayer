@@ -289,6 +289,9 @@ class DPlayer {
         this.video.poster = video.pic ? video.pic : '';
         this.video.src = video.url;
         this.initMSE(this.video, video.type || 'auto');
+        this.controller.thumbnails.reload(video.thumbnails);
+        this.controller.reloadThumbnails();
+        
         if (danmakuAPI) {
             this.template.danmakuLoading.style.display = 'block';
             this.bar.set('played', 0, 'width');

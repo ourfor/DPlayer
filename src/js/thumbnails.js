@@ -2,7 +2,7 @@ class Thumbnails {
     constructor (options) {
         this.container = options.container;
         this.barWidth = options.barWidth;
-        this.container.style.backgroundImage = `url('${options.url}')`;
+        this.container.style.backgroundImage = `url("${options.url}")`;
         this.events = options.events;
     }
 
@@ -27,6 +27,11 @@ class Thumbnails {
         this.container.style.display = 'none';
 
         this.events && this.events.trigger('thumbnails_hide');
+    }
+
+    reload(url) {
+        let src = `url("${url}")`;
+        this.container.style.backgroundImage = src; 
     }
 }
 

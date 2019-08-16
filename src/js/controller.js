@@ -89,11 +89,17 @@ class Controller {
                 url: this.player.options.video.thumbnails,
                 events: this.player.events
             });
-
+            
             this.player.on('loadedmetadata', () => {
                 this.thumbnails.resize(160, this.player.video.videoHeight / this.player.video.videoWidth * 160, this.player.template.barWrap.offsetWidth);
             });
         }
+    }
+
+    reloadThumbnails(){
+        this.player.on('loadedmetadata', () => {
+            this.thumbnails.resize(160, this.player.video.videoHeight / this.player.video.videoWidth * 160, this.player.template.barWrap.offsetWidth);
+        }); 
     }
 
     initPlayedBar () {
